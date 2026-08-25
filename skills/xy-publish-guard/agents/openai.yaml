@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-publish-guard"
+  short_description: "发布前逐句排雷：分开回答平台自动审核会盯什么、内容实质有无问题，给位置和最小修改，不重写不教绕审。"
+  default_prompt: "使用 $xy-publish-guard，这条文案发布前帮我排一下雷。"

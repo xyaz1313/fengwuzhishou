@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-human-touch"
+  short_description: "逐句扫文案里 20 项机器痕迹并按原文顺序出 AI 味报告；要改时追问原意，用你自己的话改。"
+  default_prompt: "使用 $xy-human-touch，看看这段文案有没有 AI 味，只诊断不改。"

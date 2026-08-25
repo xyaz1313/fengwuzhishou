@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-workbench"
+  short_description: "把散乱的 Agent 工作台整成 Claude Code/Codex/Grok 多端一致：审规则文件、认真源、统一命名、验证。"
+  default_prompt: "使用 $xy-workbench，把这个项目迁移成 Claude Code 和 Codex 都能用的 Agent 工作台。"

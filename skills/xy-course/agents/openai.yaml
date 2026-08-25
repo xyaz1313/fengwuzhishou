@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-course"
+  short_description: "把一个课题做成连着读的学习文章，每篇末尾设检查站收答案与反馈，没吃透不进下一课；可从好内容反推课程。"
+  default_prompt: "使用 $xy-course，带我系统学一下私域成交，一篇一篇来。"

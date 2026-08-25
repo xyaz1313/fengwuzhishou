@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-link"
+  short_description: "把 skill 软链挂到本机各宿主入口（~/.agents/skills、Claude Code 等），查桥接状态、拆桥。"
+  default_prompt: "使用 $xy-link，把这个 skill 桥接到本机所有 Agent 宿主并检查桥接状态。"

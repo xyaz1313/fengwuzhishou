@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy"
+  short_description: "XY 私域/短视频/AI 商业操盘主入口：新手教程、按处境路由到对应 xy 技能、任务后导航下一步。"
+  default_prompt: "使用 $xy，我描述一下我的生意/账号处境，帮我路由到该用的 xy 技能。"

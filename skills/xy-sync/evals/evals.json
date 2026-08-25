@@ -1,0 +1,17 @@
+[
+  {
+    "input": "我刚写完 xy-close 和 xy-private-ops 两个 skill，还往 incoming 里放了一卷新原子，把它们同步到我所有的 Agent 里。",
+    "expect": "跑 scripts/xy-sync.sh sync：先 build_atoms.py 重建原子导出（含 incoming 分卷），再用 xy-link 批量桥接 skills/；回报同步的 skill 数、本次新增入口（含 xy-close / xy-private-ops）、失败项；发现仓库根不是 git 仓库时只说明'还没接 GitHub'，不 git init。",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "把这次改动推到 GitHub。（用户此前在 XY-Skill执行/ 这个父目录 git init 过并配了远程）",
+    "expect": "先跑 git-check；识别 git 顶层是父目录 ≠ 仓库根 → 返回 PARENT_REPO，拒绝推送并解释会把 knowledge/_internal、逐字稿、规划文档一起推出去；建议在仓库根单独建仓且 .gitignore 忽略内部目录；不执行 git add/push，不自己去建仓。",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "只把 xy-opener 这一个 skill 桥到 Codex 看看效果，其他先别动。",
+    "expect": "识别这是单个 skill 桥接，属于 xy-link；本 skill 是整库同步/推送/拉取，不为一个 skill 跑全量；说明边界并保留用户信息。",
+    "should_route_elsewhere": true
+  }
+]

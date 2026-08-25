@@ -1,0 +1,17 @@
+[
+  {
+    "input": "/xy-mp-layout 私域诊断报告.md",
+    "expect": "不闷头生成；先问一次「要哪种：推荐 1 个 / 6 个推荐 / 全部 15 个 / 指定风格」；用户选后读 templates/styles.md，输出到同目录 公众号HTML输出/，文件名含 style id 与风格名；正式 HTML 无 <style>/class/id/伪元素，每个可见元素自带 style；文稿首个 # 标题只进 <title> 不进 body；跑完 9 项检查再给粘贴四步提示",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "这篇课程讲义帮我做成公众号版，正文里要保留一级标题",
+    "expect": "直接用 course 风格生成，不再追问模式；因用户明确要求保留标题，首个一级标题输出为 <h1>（例外情形），后续一级标题仍降为 <h2>；其余兼容规则照旧；交付时告知 Cmd+A/Cmd+C/粘贴/后台预览",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "帮我看看这篇公众号文章写得怎么样，观点站不站得住，顺便排个版",
+    "expect": "说明本 skill 只做排版、不评估内容与观点，内容诊断属于 xy-content-scan；保留用户已给的稿子与需求不让重讲；若用户仍要排版，可继续按流程做排版部分",
+    "should_route_elsewhere": true
+  }
+]

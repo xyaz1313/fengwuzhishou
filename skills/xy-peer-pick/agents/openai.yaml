@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-peer-pick"
+  short_description: "从对标账号里筛真正值得抄的目标：过赚钱/量级/健康度三条硬线，抄生意结构不抄表面，拆成执行清单。"
+  default_prompt: "使用 $xy-peer-pick，判断这个对标账号值不值得抄，值得的话拆成能执行的清单。"

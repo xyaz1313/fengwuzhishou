@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-opener"
+  short_description: "短视频开头诊断与生成：先过闸门看内容配不配好开头，六维诊断现有开头，出 10–15 条候选并推荐 Top 3。"
+  default_prompt: "使用 $xy-opener，这条视频前 3 秒留不住人，帮我诊断开头并出候选。"

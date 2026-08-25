@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-coach"
+  short_description: "XY 操盘教练 Skill 版：恢复 ~/.xy 档案、判断业务阶段、只推进一步、调用对应 xy 技能、用原子 id 作答。"
+  default_prompt: "使用 $xy-coach，你是我的操盘教练，先看我的档案再带我推进下一步。"

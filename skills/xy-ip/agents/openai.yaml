@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-ip"
+  short_description: "IP 人设定位七项验证（商业锚点、真实内核、垂直深度、记忆点…）：判断人设立不立得住，含操盘手代推模式。"
+  default_prompt: "使用 $xy-ip，帮我看看这个人设定位立不立得住。"

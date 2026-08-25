@@ -1,0 +1,5 @@
+[
+ {"input":"/xy 我做大健康私域，微信 300 人，最近成交很差，不知道是品的问题还是话术的问题","expect":"路由到 xy-close（有客户、卡在成交），说一句「明白了，这个交给 xy-close 处理」后直接执行；不展示菜单、不问第二个问题","should_route_elsewhere":false},
+ {"input":"（对话里已有 xy-selection 输出：品能做，需要收费测试但不知道去哪找人测）/xy","expect":"任务后导航：识别上一 skill 结论，选 xy-traffic 或 xy-newbie 之一并解释「刚才得出 X，所以当前先用 Y」，立即执行","should_route_elsewhere":false},
+ {"input":"/xy 帮我写一条完整的短视频口播稿","expect":"说明边界（不代笔），按需求路由到 xy-content-scan/xy-idea-desk 做诊断或选题深化，而不是直接代写","should_route_elsewhere":true}
+]

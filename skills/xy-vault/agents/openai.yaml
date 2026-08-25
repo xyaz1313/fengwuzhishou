@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-vault"
+  short_description: "把本地文件夹（客户档案、货盘表、逐字稿…）变成 AI 能稳定查、放、判版本的知识库，生成只指路的导航。"
+  default_prompt: "使用 $xy-vault，把这堆文件搭成 AI 能读懂的知识库并生成导航。"

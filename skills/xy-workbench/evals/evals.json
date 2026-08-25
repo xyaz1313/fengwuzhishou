@@ -1,0 +1,17 @@
+[
+  {
+    "input": "我这个项目只有一个 CLAUDE.md，skill 有的在项目 prompts/ 里、有的在 ~/.claude/skills 里手建的，现在想让 Codex 和 Grok 也能用。",
+    "expect": "Phase 1 判为规则层 B 类（只有 CLAUDE.md）+ 宿主 Claude 主；先汇报四句话（属于哪类/做对了什么/缺什么/先动哪层）并问是否继续；不直接批量搬文件；Phase 3 走候选发现出清单；Phase 5 用 xy-link 脚本做软链 + Grok 薄 bridge，不另写 Claude/Codex 薄指针。",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "命名我想用中文目录'选品诊断'，Codex 里显示名叫'XY｜选品'，行不行？",
+    "expect": "按 Phase 4 六条命名规则拒绝：目录名=frontmatter name=入口名=斜杠命令，小写 kebab-case 且 xy- 前缀（如 xy-selection）；中文只做标题/意图；Codex openai.yaml 的 display_name 必须等于目录名，中文放 short_description（25–64 字、全库唯一）。",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "把 skills/xy-opener 桥接到 Codex 就行，别的都不用动。",
+    "expect": "识别为单个 skill 桥接，属于 xy-link；本 skill 管整个工作台的审计/真源/命名/桥接/验证流程；说明边界，保留用户信息，不预设长链。",
+    "should_route_elsewhere": true
+  }
+]

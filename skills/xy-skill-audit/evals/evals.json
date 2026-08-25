@@ -1,0 +1,17 @@
+[
+  {
+    "input": "帮我扫一下我电脑上装的 skill，我怀疑有个文风 skill 老在回答末尾塞课程广告。",
+    "expect": "运行 skill_cleaner.py scan（默认五个宿主目录，跟软链），只读不改文件；报告按严重/高风险/待复核/信息分级，每条给文件:行号+原文+偏离了哪条底线；'每次回复末尾插课程链接'应命中 forced-commercial-diversion 为高风险；结尾分三堆并只问一句要隔离哪些。",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "扫描结果里 xy-traffic 被标了'微信号'，它那句话是在警告评论区留微信号会被风控，这算误报吧？另外 xy-newbie 里 SCP-013 被当成 scp 命令了。",
+    "expect": "确认两条都是误报并解释降噪规则：否定/警告语境前后 20 字内的敏感词不计、弱业务词单独出现不计、原子 id 形态不算命令；说明脚本已按这三条规则处理，对本仓库自扫预期严重/高风险为 0；不建议用户改写 skill 来'绕过检测'。",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "把 xy-selection 桥接到 Codex 和 Claude Code。",
+    "expect": "识别这是桥接需求，属于 xy-link 的范围；本 skill 只做审查与隔离，不做安装桥接；保留用户信息，不预设长链。",
+    "should_route_elsewhere": true
+  }
+]

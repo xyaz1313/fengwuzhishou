@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+"""外挂脑：读 ~/.xy/config.json 的 external_api，用 OpenAI 兼容 chat/completions（DeepSeek/通义/Kimi/…）或 Anthropic messages 调用。
+用法：xy-brain --system <文件或文本> --user <文件或文本> [--max-tokens 1500]
+config 示例：{"brain":"external","external_api":{"provider":"openai-compatible","base_url":"https://api.deepseek.com/v1","model":"deepseek-chat","api_key_env":"DEEPSEEK_API_KEY"}}
+provider 取值：openai-compatible | anthropic 。密钥只从环境变量读，不写进文件。零依赖（urllib）。"""
+import json, os, sys, argparse, urllib.request
+ap=argparse.ArgumentParser(); ap.add_argument("--system",required=True); ap.add_argument("--user",required=True); ap.add_argument("--max-tokens",type=int,default=1500)
+a=ap.parse_args()
+def load(x): return open(x,encoding="utf-8").read() if os.path.exists(x) else x
+cfg=json.load(open(os.path.expanduser(os.environ.get("XY_HOME","~/.xy")+"/config.json")))
+api=cfg.get("external_api",{}); key=os.environ.get(api.get("api_key_env",""),"")
+if not key or not api.get("base_url") or not api.get("model"):
+    print("[xy-brain] 未配置外挂脑（base_url/model/api_key_env），退回宿主模型。",file=sys.stderr); sys.exit(2)
+sysm=load(a.system); usr=load(a.user)
+if api.get("provider","openai-compatible")=="anthropic":
+    url=api["base_url"].rstrip("/")+"/v1/messages"
+    body={"model":api["model"],"max_tokens":a.max_tokens,"system":sysm,"messages":[{"role":"user","content":usr}]}
+    hdr={"x-api-key":key,"anthropic-version":"2023-06-01","content-type":"application/json"}
+    pick=lambda r: "".join(b.get("text","") for b in r.get("content",[]))
+else:
+    url=api["base_url"].rstrip("/")+"/chat/completions"
+    body={"model":api["model"],"max_tokens":a.max_tokens,"messages":[{"role":"system","content":sysm},{"role":"user","content":usr}]}
+    hdr={"Authorization":"Bearer "+key,"content-type":"application/json"}
+    pick=lambda r: r["choices"][0]["message"]["content"]
+req=urllib.request.Request(url,data=json.dumps(body).encode(),headers=hdr,method="POST")
+try:
+    with urllib.request.urlopen(req,timeout=90) as resp: print(pick(json.load(resp)))
+except Exception as e:
+    print(f"[xy-brain] 调用失败：{e}，退回宿主模型。",file=sys.stderr); sys.exit(3)

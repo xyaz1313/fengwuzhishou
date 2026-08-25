@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-slow-lane"
+  short_description: "慢就是快：分清眼前的事里哪个环节值得亲自慢做（前 100 客户、首轮测品、招人前先干一遍），哪个该外包。"
+  default_prompt: "使用 $xy-slow-lane，这件事我想外包省事，帮我判断是不是走捷径了。"

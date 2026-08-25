@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-question-spec"
+  short_description: "把说不清的问题改写成有对象、冲突、约束、反馈入口的问题说明书，并判断能被 Agent 接手到哪一档。"
+  default_prompt: "使用 $xy-question-spec，帮我把「为什么没人咨询」这个问题说清楚，判断能不能自动化。"

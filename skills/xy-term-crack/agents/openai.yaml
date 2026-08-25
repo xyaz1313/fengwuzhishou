@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-term-crack"
+  short_description: "拆解私域/短视频/IP 圈被说烂的概念（直营化、推客、心智位、被动收入…），落到动作和数字，辨旧词换皮。"
+  default_prompt: "使用 $xy-term-crack，帮我拆一下「私域」这个词到底指什么，落到动作和数字。"

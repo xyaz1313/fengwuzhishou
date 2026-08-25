@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-close"
+  short_description: "私域成交逐环节诊断：从加微信到报价、逼单、复购、升单、客诉，查节奏、锚点、一转二转三转、跟进分层。"
+  default_prompt: "使用 $xy-close，客户聊了不下单，帮我看看成交卡在哪个环节。"

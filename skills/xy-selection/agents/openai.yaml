@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-selection"
+  short_description: "选品诊断：教育市场×定价权两轴分类、供应链全成本核算、收费市场三轮测试，判断品类能不能碰扛不扛得住。"
+  default_prompt: "使用 $xy-selection，帮我判断这个品类能不能做、供应链要不要核算。"

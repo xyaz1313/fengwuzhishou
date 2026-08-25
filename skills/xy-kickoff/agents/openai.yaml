@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-kickoff"
+  short_description: "执行力诊断：判断你卡在六种「不开工」里的哪一种，按类型给出最小开工动作，不打鸡血。"
+  default_prompt: "使用 $xy-kickoff，我知道该做什么却迟迟不动，帮我判断卡在哪一种并给最小开工动作。"

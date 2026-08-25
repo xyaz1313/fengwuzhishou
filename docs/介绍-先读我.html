@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>风物执守 · 系统介绍</title>
+</head>
+<body>
+
+<style>
+:root{
+  --paper:#faf9f5; --ink:#22261f; --ink-2:#4d5245; --ink-3:#7e8474;
+  --pine:#2e6b4f; --pine-deep:#1d4a36; --pine-wash:#e8f0eb;
+  --line:#dcdfd6; --card:#ffffff; --code:#f0f2ec; --warn:#a4552f;
+}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#171a15; --ink:#e6e8e0; --ink-2:#b6bcab; --ink-3:#848b78;
+    --pine:#6fb893; --pine-deep:#8eccaa; --pine-wash:#20291f;
+    --line:#333829; --card:#1e221b; --code:#242920; --warn:#d98b5f;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#171a15; --ink:#e6e8e0; --ink-2:#b6bcab; --ink-3:#848b78;
+  --pine:#6fb893; --pine-deep:#8eccaa; --pine-wash:#20291f;
+  --line:#333829; --card:#1e221b; --code:#242920; --warn:#d98b5f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75;font-size:16px}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:"Songti SC","Noto Serif SC","STSong",serif;text-wrap:balance;line-height:1.3}
+header{padding:72px 0 48px;border-bottom:3px solid var(--pine)}
+.kicker{color:var(--pine);font-weight:600;letter-spacing:.35em;font-size:13px;text-transform:uppercase}
+h1{font-size:44px;margin:10px 0 14px;color:var(--ink)}
+.tagline{font-size:19px;color:var(--ink-2);max-width:34em}
+.stats{display:flex;gap:0;margin-top:36px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
+.stat{flex:1;padding:16px 20px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:none}
+.stat b{display:block;font-size:26px;color:var(--pine);font-variant-numeric:tabular-nums;font-family:"Songti SC","Noto Serif SC",serif}
+.stat span{font-size:13px;color:var(--ink-3)}
+section{padding:44px 0;border-bottom:1px solid var(--line)}
+h2{font-size:26px;margin-bottom:6px;color:var(--ink)}
+h2 .no{color:var(--pine);margin-right:10px}
+.sub{color:var(--ink-3);font-size:14px;margin-bottom:22px}
+p{margin:12px 0;max-width:42em}
+strong{color:var(--pine-deep)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:640px){.two{grid-template-columns:1fr}.stats{flex-wrap:wrap}.stat{min-width:45%}h1{font-size:34px}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+.box h3{font-size:16px;margin-bottom:10px;color:var(--pine-deep)}
+.box ul{padding-left:1.2em;color:var(--ink-2)}
+.box li{margin:6px 0}
+.steps{counter-reset:s;margin:20px 0;display:grid;gap:12px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px 16px 58px;position:relative}
+.step::before{counter-increment:s;content:counter(s);position:absolute;left:18px;top:14px;
+  width:26px;height:26px;border-radius:50%;background:var(--pine);color:var(--paper);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.tblwrap{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th{background:var(--pine-wash);color:var(--pine-deep);text-align:left;padding:10px 14px;font-weight:600;white-space:nowrap}
+td{padding:9px 14px;border-top:1px solid var(--line);color:var(--ink-2);vertical-align:top}
+td:first-child{white-space:nowrap;color:var(--ink);font-weight:500}
+code{background:var(--code);padding:2px 7px;border-radius:5px;font-size:13.5px;font-family:"SF Mono",Menlo,monospace;color:var(--pine-deep)}
+.stage{margin:26px 0}
+.stage-head{display:flex;align-items:baseline;gap:12px;margin-bottom:10px}
+.stage-head h3{font-size:18px;color:var(--ink)}
+.stage-head .tag{font-size:12px;color:var(--pine);border:1px solid var(--pine);border-radius:99px;padding:1px 10px;white-space:nowrap}
+.say{background:var(--pine-wash);border-left:4px solid var(--pine);border-radius:0 10px 10px 0;padding:14px 18px;margin:18px 0;color:var(--ink-2)}
+.say b{color:var(--pine-deep)}
+.warnbox{border-left:4px solid var(--warn);background:var(--card);border-radius:0 10px 10px 0;padding:14px 18px;margin:18px 0}
+.warnbox b{color:var(--warn)}
+footer{padding:36px 0 60px;color:var(--ink-3);font-size:13.5px}
+footer .v{color:var(--pine);font-weight:600}
+figure.diagram{margin:22px 0 6px;padding:0;background:none;border:none}
+figure.diagram svg{display:block;width:100%;height:auto}
+figure.diagram figcaption{color:var(--ink-3);font-size:13px;text-align:center;margin-top:10px}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="kicker">遍历世间风物 · 执守事物本源</div>
+  <h1>风物执守</h1>
+  <p class="tagline">XY 操盘系统——一套装进 AI 里的商业与私域顾问。私域为主体，流量是它自带的能力。你把生意的实情告诉它，它按一线实战沉淀的知识原子帮你诊断、拆解、推进——每个判断都有出处，每次只推进一步。</p>
+  <div class="stats">
+    <div class="stat"><b>43</b><span>个技能，覆盖全链路</span></div>
+    <div class="stat"><b>26895</b><span>条实战知识原子</span></div>
+    <div class="stat"><b>77</b><span>节私域课打底</span></div>
+    <div class="stat"><b>1</b><span>个懂你生意的教练</span></div>
+  </div>
+</header>
+
+<section>
+  <h2><span class="no">壹</span>它是什么、不是什么</h2>
+  <div class="two">
+    <div class="box"><h3>它是</h3><ul>
+      <li>一个装在你 AI 工具里的<strong>操盘参谋</strong>：诊断商业模式、看内容、查导流、盘成交、审团队</li>
+      <li>每句判断都落到具体的<strong>知识原子编号</strong>上——来自真实操盘案例、账号运营和 77 节私域课，不是大模型的漂亮空话</li>
+      <li>一个<strong>会记住你的系统</strong>：建过档，下次打开还认识你的盘子，接着上次的结论往下走</li>
+    </ul></div>
+    <div class="box"><h3>它不是</h3><ul>
+      <li>不是代写工具——诊断类技能<strong>只诊断不代写</strong>，先让你想明白，再动手</li>
+      <li>不是话术库——没有信任阶梯定位之前，它不会给你成交话术</li>
+      <li>不是流量课——这里的逻辑是<strong>私域本身就能做流量</strong>，短视频、AI 都是私域自带的能力，不是前置门槛</li>
+    </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="no">贰</span>三步装好</h2>
+  <div class="steps">
+    <div class="step">解压 <code>风物执守技能包</code></div>
+    <div class="step">把里面 43 个文件夹<strong>整体拷进</strong>你 AI 工具的技能目录（对照下表）</div>
+    <div class="step">重启工具，说一句 <code>/xy</code>，或者直接描述你的生意问题</div>
+  </div>
+  <div class="tblwrap"><table>
+    <tr><th>你用的工具</th><th>拷到哪</th></tr>
+    <tr><td>Claude Code</td><td><code>~/.claude/skills/</code></td></tr>
+    <tr><td>Codex</td><td><code>~/.agents/skills/</code></td></tr>
+    <tr><td>Kimi Code</td><td><code>~/.kimi-code/skills/</code></td></tr>
+    <tr><td>Cursor</td><td><code>~/.cursor/skills/</code>（聊天框输入 <code>/xy-…</code> 调用）</td></tr>
+    <tr><td>WorkBuddy</td><td><code>~/.workbuddy/skills/</code></td></tr>
+    <tr><td>悟空（钉钉）</td><td>客户端「技能中心 → 上传技能」手动上传</td></tr>
+    <tr><td>其它支持 Skill 的工具</td><td><code>~/.agents/skills/</code>（通用入口）</td></tr>
+  </table></div>
+  <p class="sub">macOS 在访达按 <code>Cmd+Shift+G</code> 输入路径即可打开；目录不存在就新建。每个技能自带知识子集，<strong>单拷任何一个文件夹也能独立工作</strong>。</p>
+</section>
+
+<section>
+  <h2><span class="no">叁</span>三种用法</h2>
+  <div class="say"><b>不知道从哪开始：</b>说 <code>/xy</code>——总入口会带你，做完一件事告诉你下一件。</div>
+  <div class="say"><b>想有人带着走：</b>说 <code>/xy-coach</code>——教练先问你五个问题（卖什么、卖给谁、走到哪一步…）建一份生意档案，之后每次只推进一步，句句带证据。档案存在你自己电脑 <code>~/.xy/</code> 里，换工具也不丢。</div>
+  <div class="say"><b>直接说人话：</b>「我私域客户老不回消息」「这条视频为什么没人看」「这个品能不能做」——系统自动匹配对应技能。</div>
+</section>
+
+<section>
+  <h2><span class="no">肆</span>系统怎么串起来</h2>
+  <p class="sub">一句话问题进来，路由到板块，板块背后是知识原子，收口之后存进你自己的档案——下次接着聊。</p>
+  <figure class="diagram">
+    <img src="assets/system-flow.png" alt="风物执守系统流程图：你的问题先进入 /xy 路由，单一需求直接进对应板块，多个需求先反问选哪一个；五大板块（想清楚生意、做内容、流量与导流、私域主战场、团队与模式）背后共用同一个 26895 条的知识原子库；每轮收口固定输出第一件事、该盯的数字、依据；结论存进本地 ~/.xy 档案记忆，下次回到路由时接着上次继续。" style="width:100%;height:auto;border-radius:10px;border:1px solid var(--line)">
+    <figcaption>一句话问题先过 /xy 路由，五大板块共用同一个知识原子库，每轮收口固定三行，结论存进本地档案、下次接着聊。</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2><span class="no">伍</span>43 个技能，按生意推进的顺序排</h2>
+  <p class="sub">每个技能一句话。粗体是最常用的几个。</p>
+
+  <div class="stage"><div class="stage-head"><h3>入口</h3><span class="tag">从这里进</span></div>
+  <div class="tblwrap"><table>
+    <tr><td><b>xy</b></td><td>总入口：新手教程、帮你挑对技能、做完告诉你下一件事</td></tr>
+    <tr><td><b>xy-coach</b></td><td>操盘教练：建档、记住你的盘子、每次只推进一步</td></tr>
+  </table></div></div>
+
+  <div class="stage"><div class="stage-head"><h3>想清楚生意</h3><span class="tag">动手之前</span></div>
+  <div class="tblwrap"><table>
+    <tr><td><b>xy-biz-scan</b></td><td>商业模式诊断：问诊（拆你的问题）或体检（七项检查过盘子）</td></tr>
+    <tr><td>xy-question-spec</td><td>把「为什么没人咨询」这类说不清的问题改写成能回答的问题</td></tr>
+    <tr><td>xy-goal-card</td><td>把「我想做私域」落成能开工能验收的目标卡</td></tr>
+    <tr><td><b>xy-selection</b></td><td>选品：两轴分类＋全成本核算＋收费测试三轮法</td></tr>
+    <tr><td>xy-playbook</td><td>赛道打法推演：八张行业模板（减脂/精油/服装/知识付费…）</td></tr>
+    <tr><td>xy-ip</td><td>IP 人设七项可验证标准，判断人设立不立得住</td></tr>
+    <tr><td>xy-peer-pick</td><td>对标筛选：三条硬线先过，再看你抄的是结构还是表面</td></tr>
+    <tr><td>xy-precedent</td><td>把你的困境压成结构指纹，去商业史里找同构案例</td></tr>
+    <tr><td>xy-term-crack</td><td>把「私域」「人效」「订单粉」这些被说烂的词拆回人话</td></tr>
+    <tr><td>xy-roundtable</td><td>一个议题，三到五套理论框架同台对质</td></tr>
+    <tr><td>xy-slow-lane</td><td>慢就是快：分清哪个环节值得亲自慢做、哪个该放手</td></tr>
+  </table></div></div>
+
+  <div class="stage"><div class="stage-head"><h3>做内容</h3><span class="tag">私域的弹药</span></div>
+  <div class="tblwrap"><table>
+    <tr><td>xy-idea-desk</td><td>想法工作台：从随口灵感养成能用的选题</td></tr>
+    <tr><td><b>xy-content-scan</b></td><td>内容诊断：该做什么形式、发哪个平台，五维度过一遍</td></tr>
+    <tr><td>xy-opener</td><td>短视频开头：先判配不配好开头，再六维诊断，再三法生成</td></tr>
+    <tr><td>xy-script-glue</td><td>逐字稿衔接：找出观众在哪一秒跟不上</td></tr>
+    <tr><td>xy-clip</td><td>课程/直播逐字稿切成短视频方案</td></tr>
+    <tr><td><b>xy-replica</b></td><td>爆款素材复刻：拆对标结构、换上你的卖点复刻成片</td></tr>
+    <tr><td>xy-xhs-headline</td><td>小红书标题：75 个公式模板匹配，标编号给 Top 3</td></tr>
+    <tr><td>xy-echo-test</td><td>发之前用五个传播学理论判有没有人会有感觉</td></tr>
+    <tr><td>xy-human-touch</td><td>AI 味检测：20 项逐句扫机器痕迹</td></tr>
+    <tr><td><b>xy-publish-guard</b></td><td>发布前风控：平台限流和法务红线分开回答（含四大平台现行规则）</td></tr>
+    <tr><td>xy-mp-layout</td><td>公众号排版：Markdown 转不散版 HTML，15 种风格</td></tr>
+    <tr><td>xy-ai-workflow</td><td>内容流水线审计：哪步给 AI、哪步必须留人</td></tr>
+    <tr><td>xy-course</td><td>把一个课题做成带检查站的系列学习文章</td></tr>
+  </table></div></div>
+
+  <div class="stage"><div class="stage-head"><h3>流量进私域</h3><span class="tag">附属能力，不是前置条件</span></div>
+  <div class="tblwrap"><table>
+    <tr><td><b>xy-traffic</b></td><td>导流路径设计：平台风控、导流强度、手法风险分级、后端承接</td></tr>
+    <tr><td>xy-newbie</td><td>新人起步：赢的体验优先、熟人流量启动、前 100 客户是练习成本</td></tr>
+  </table></div></div>
+
+  <div class="stage"><div class="stage-head"><h3>私域运营与成交</h3><span class="tag">主战场</span></div>
+  <div class="tblwrap"><table>
+    <tr><td><b>xy-private-ops</b></td><td>私域日常：朋友圈配比、号面人设、标签分层、激活沉睡、社群</td></tr>
+    <tr><td><b>xy-close</b></td><td>成交诊断：从加上微信到复购升单客诉，逐环节查卡在哪</td></tr>
+    <tr><td>xy-kickoff</td><td>知道该做什么却不动？辨认六种「不开工」</td></tr>
+  </table></div></div>
+
+  <div class="stage"><div class="stage-head"><h3>团队与模式</h3><span class="tag">盘子大了之后</span></div>
+  <div class="tblwrap"><table>
+    <tr><td>xy-mode</td><td>分佣模式审查：合规红线、分钱结构、C 端健康度、反面模式</td></tr>
+    <tr><td>xy-ops</td><td>操盘手审查：起盘阶段匹配、组织临界值、人效红线</td></tr>
+  </table></div></div>
+
+  <div class="stage"><div class="stage-head"><h3>记忆与资产</h3><span class="tag">越用越值钱</span></div>
+  <div class="tblwrap"><table>
+    <tr><td>xy-archive / xy-resume</td><td>每轮结论存档，下次「接着上次」精确续上</td></tr>
+    <tr><td>xy-brief</td><td>多份存档合成一份能发合伙人的诊断报告</td></tr>
+    <tr><td>xy-casefile</td><td>长期决策立案：事实/规律/定格/待解四层，结果回填</td></tr>
+    <tr><td>xy-atomize</td><td>把你自己的文稿抽成原子入库，系统越喂越懂你</td></tr>
+    <tr><td>xy-vault</td><td>本地文件夹（客户档案/货盘表/逐字稿）变成 AI 稳定可查的库</td></tr>
+  </table></div></div>
+
+  <div class="stage"><div class="stage-head"><h3>装机与维护</h3><span class="tag">管系统自己</span></div>
+  <div class="tblwrap"><table>
+    <tr><td>xy-workbench / xy-link</td><td>装到各个 AI 工具</td></tr>
+    <tr><td>xy-sync</td><td>改过的技能一键同步 + 检查更新</td></tr>
+    <tr><td>xy-skill-audit</td><td>扫描本机装的第三方技能有没有暗中导流、偷数据</td></tr>
+  </table></div></div>
+</section>
+
+<section>
+  <h2><span class="no">陆</span>底座：26895 条知识原子</h2>
+  <p>系统的每个判断都要落到一条具体的知识原子上，答不出出处就明说「原子库暂无实证」。原子来自：<strong>77 节私域课</strong>、真实账号运营与爆款拆解、一线操盘案例问答、行业方法论提炼，以及 <strong>2026 年 8 月查证的抖音/小红书/微信/视频号官方现行规则</strong>（127 条，规则会变，均标注查证日期）。</p>
+  <p>原子分七类：原则、方法、案例、洞察、定义、数字、反面教训。带真实数字的案例标 <code>high</code>，纯判断标 <code>medium</code>——系统引用时措辞会相应留有余地，不把没验证过的判断说成铁律。</p>
+</section>
+
+<section>
+  <h2><span class="no">柒</span>内测须知</h2>
+  <div class="warnbox"><b>请勿外传。</b>这是内测版本，包和介绍页都只发给受邀的人。</div>
+  <p>怎么反馈：遇到答得不对、答不上、或者你觉得「这里应该有个技能但没有」的情况，把<strong>原话问题 + 它的回答</strong>截下来发给小爷。判断失误的反馈最值钱。</p>
+  <p>已知边界：需要电脑装有 Python 3（macOS 自带）才有原子检索加分项；Cursor 的技能搜索面板可能显示不出新技能，但聊天框斜杠命令能用；个别答案没引用最新批次原子属正常现象——检索按相关度取证据。</p>
+</section>
+
+<footer>
+  <span class="v">风物执守 · XY 操盘系统 v2.7.0</span> · 2026-08-25 打包 · 43 技能 / 26895 原子 · 更新方式：删旧文件夹换新文件夹，个人档案在 <code>~/.xy/</code> 不受影响
+</footer>
+</div>
+
+</body>
+</html>

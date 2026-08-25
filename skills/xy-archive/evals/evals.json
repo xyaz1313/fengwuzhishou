@@ -1,0 +1,17 @@
+[
+  {
+    "input": "（前文已在 xy-close 里聊出结论：客户不下单的根子在朋友圈 7 天没真人内容；用户否掉了 9.9 元体验装引流）用户说：这个结论留着，存一下。",
+    "expect": "按 .xy/config.json 解析存档根目录（无配置则 ~/.xy/）；写入 {根}/sessions/{项目名}/{YYYYMMDD-HHMMSS}-{标题片}.md；frontmatter 六字段齐全，timestamp 为带冒号时区的 ISO 8601，source_skill 为 xy-close，status 默认 in-progress，next_skill 留空（用户未确认）；正文六段段名逐字为「用户主诉 / 已得出的结论 / 用户已否决的方向 / 待验证假设 / 已确认的下一步 / 备注」，否决方向写 9.9 元引流及理由，下一步写「待定」；回执一行含路径与份数，不复述内容。",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "用户刚打开对话就说：/xy-archive",
+    "expect": "判断对话里没有任何诊断结论，不写文件；回一句「这一轮还没有结论可存，先聊出结果再来存」。",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "用户说：我打算 8 月把 A 品换成 B 品，这个决定我要跟三个月，到时候看复购结果回填。",
+    "expect": "识别这是长期跟踪 + 结果回填需求，不属于单次存档；说明本 skill 只存一轮结论，长期跟一个域并回填的是 xy-casefile 的事，保留用户已说的信息，不让用户重讲。",
+    "should_route_elsewhere": true
+  }
+]

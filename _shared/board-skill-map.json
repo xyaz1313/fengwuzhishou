@@ -1,0 +1,82 @@
+{
+ "boards": {
+  "01 认知与心态": [
+   "xy-roundtable",
+   "xy-precedent",
+   "xy-slow-lane",
+   "xy-term-crack",
+   "xy-kickoff"
+  ],
+  "02 新手起步": [
+   "xy-newbie",
+   "xy-kickoff",
+   "xy-goal-card"
+  ],
+  "03 流量获取": [
+   "xy-traffic",
+   "xy-peer-pick",
+   "xy-playbook"
+  ],
+  "04 内容创作": [
+   "xy-content-scan",
+   "xy-opener",
+   "xy-script-glue",
+   "xy-echo-test",
+   "xy-human-touch",
+   "xy-xhs-headline",
+   "xy-publish-guard",
+   "xy-clip",
+   "xy-replica",
+   "xy-idea-desk",
+   "xy-ai-workflow",
+   "xy-mp-layout"
+  ],
+  "05 IP人设": [
+   "xy-ip",
+   "xy-peer-pick"
+  ],
+  "06 私域运营": [
+   "xy-private-ops",
+   "xy-newbie"
+  ],
+  "07 成交与转化": [
+   "xy-close"
+  ],
+  "08 选品与供应链": [
+   "xy-selection"
+  ],
+  "09 模式与操盘": [
+   "xy-mode",
+   "xy-ops",
+   "xy-biz-scan",
+   "xy-playbook",
+   "xy-goal-card"
+  ],
+  "10 AI与工具": [
+   "xy-ai-workflow",
+   "xy-vault",
+   "xy-workbench",
+   "xy-link",
+   "xy-sync",
+   "xy-skill-audit",
+   "xy-question-spec"
+  ],
+  "11 案例库": [
+   "xy-precedent",
+   "xy-playbook",
+   "xy-peer-pick",
+   "xy-biz-scan"
+  ]
+ },
+ "meta_skills": [
+  "xy",
+  "xy-coach",
+  "xy-archive",
+  "xy-resume",
+  "xy-brief",
+  "xy-casefile",
+  "xy-course",
+  "xy-atomize"
+ ],
+ "note": "板块→消费技能对照；打标后每板块条数与此表一起做路由审计"
+}

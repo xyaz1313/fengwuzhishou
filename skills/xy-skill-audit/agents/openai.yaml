@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-skill-audit"
+  short_description: "扫描本机各 Agent 宿主装的 skill，找暗中导流、隐藏商业关系、劫持指令、偷读敏感数据信号；确认后隔离。"
+  default_prompt: "使用 $xy-skill-audit，扫一下我装的 skill 有没有广告或越权行为。"

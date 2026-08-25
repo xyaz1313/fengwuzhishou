@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-clip"
+  short_description: "把课程、直播、访谈的逐字稿切成可独立发布的短视频方案，跳切拼接开头展开收尾，一个字不加。"
+  default_prompt: "使用 $xy-clip，把这份直播逐字稿切成几条能单独发的短视频方案。"

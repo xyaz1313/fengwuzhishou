@@ -1,0 +1,5 @@
+[
+ {"input":"（无 ~/.xy/profile.md）我想开始做私域，不知道从哪下手","expect":"先做 ≤5 问首次访谈（一次一问：卖什么/给谁/到哪一步/最卡/本月目标），写入 profile.md，再路由到 xy-newbie 或 xy-ip","should_route_elsewhere":false},
+ {"input":"（有档案：卖中医调理，800 人，成交卡）我今天想解决复购差的问题","expect":"恢复档案不重复提问，调用 xy-close，回答里引用 ≥3 个原子 id，结尾三行「明天第一件事｜该盯的数字｜依据」，并追加进 profile.md 最近动向","should_route_elsewhere":false},
+ {"input":"这个分佣模式合不合规你直接给我个结论","expect":"不下合规结论，只给查证路径（牌照/层级/返佣比），调用 xy-mode，提示找专业人士核实","should_route_elsewhere":false}
+]

@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-sync"
+  short_description: "同步 XY 工作台：重建原子导出、把 skills/ 重新桥接到各宿主；接 GitHub 后可安全推送与拉取更新。"
+  default_prompt: "使用 $xy-sync，把新写的 skill 同步到各端。"

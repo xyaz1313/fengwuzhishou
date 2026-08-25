@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-atomize"
+  short_description: "把本地文稿、逐字稿、朋友圈目录抽成 XY 知识原子 jsonl：审计量、抽样确认、批量提炼、去重验收、提示入库。"
+  default_prompt: "使用 $xy-atomize，把这个文件夹的稿子抽成 XY 原子入库。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-newbie"
+  short_description: "私域/短视频新人起步 SOP：赢的体验优先、熟人流量启动、前 100–200 客户当练习成本，拦住自我感动式准备。"
+  default_prompt: "使用 $xy-newbie，我是新人刚入行，帮我排一条能落地的起步顺序。"

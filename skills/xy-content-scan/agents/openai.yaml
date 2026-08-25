@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-content-scan"
+  short_description: "内容诊断：选题已定后判断做成什么形式、发哪个平台，再按五维度过一遍出报告和明天第一步，不代写。"
+  default_prompt: "使用 $xy-content-scan，这个选题拍成什么形式、发哪个平台，帮我过一遍。"

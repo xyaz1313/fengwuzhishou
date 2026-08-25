@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-casefile"
+  short_description: "为要长期跟踪的域立案：事实/规律/定格/待解四层本地知识工程，带来源标签快照，可回填结果、出状态画像。"
+  default_prompt: "使用 $xy-casefile，这个决定要长期跟踪，帮我立案并做份状态画像。"

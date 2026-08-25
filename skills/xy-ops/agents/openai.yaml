@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-ops"
+  short_description: "操盘手视角审查团队搭建、人效与起盘节奏：起盘阶段匹配、组织规模临界值、人效红线、分钱执行、一线检验。"
+  default_prompt: "使用 $xy-ops，帮我看看团队搭建和提成设计对不对、该不该扩团队。"

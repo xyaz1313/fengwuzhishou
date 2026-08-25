@@ -1,0 +1,17 @@
+[
+  {
+    "input": "把 xy-selection 桥接到我电脑上所有能用的 Agent，我装了 Claude Code 和 Codex，没装 WorkBuddy。",
+    "expect": "运行 scripts/bridge-skill.sh link xy-selection；回报公共入口 ~/.agents/skills/xy-selection（Codex 从这里读）和 ~/.claude/skills/xy-selection 已建；不为 ~/.workbuddy 等未安装宿主新建目录也不列出它们；不复制文件；不临场手写 ln -s。",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "桥好了没？我记得以前 ~/.codex/skills 里也有一份 xy-selection。",
+    "expect": "运行 status；逐层报公共入口/专属入口/Grok 的 ✓/✗/·；对 ~/.codex/skills 里指向同一真源的旧软链报为重复入口并说明跑一次 link 可清理；若某处软链指向别的源要报出来而不是当作桥好了。",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "我这个项目 CLAUDE.md 和 AGENTS.md 乱成一团，skill 散在三个文件夹里，帮我整理成 Claude Code 和 Codex 都能用的工作台。",
+    "expect": "识别这是整个工作台的审计/真源/命名/桥接/验证流程，属于 xy-workbench 的范围；说明本 skill 只管把已确定的 skill 目录挂到各宿主，保留用户已给的信息，不替用户预设长链。",
+    "should_route_elsewhere": true
+  }
+]

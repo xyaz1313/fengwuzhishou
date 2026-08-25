@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-mp-layout"
+  short_description: "把 Markdown 转成粘进微信公众号后台不散版的 HTML，内置 15 种排版风格，可出 1/6/15 个并生成总览页。"
+  default_prompt: "使用 $xy-mp-layout，把这篇 Markdown 转成公众号排版 HTML。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-mode"
+  short_description: "团队/分佣模式审查五维度：模式定性、合规红线自查、分钱结构、C 端健康度、反面模式，拆穿被动收入类陷阱。"
+  default_prompt: "使用 $xy-mode，帮我看看这个分佣模式站不站得住、合规怎么查。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-biz-scan"
+  short_description: "商业模式诊断：问诊模式先拆你的问题成不成立；体检模式用 XY 七项检查从净利润到成长阶段过一遍出报告。"
+  default_prompt: "使用 $xy-biz-scan，帮我诊断一下我这个生意的模式到底赚不赚钱。"

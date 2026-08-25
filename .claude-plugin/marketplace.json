@@ -1,0 +1,487 @@
+{
+  "name": "xy-skills",
+  "owner": {
+    "name": "xiaoye"
+  },
+  "metadata": {
+    "description": "XY 商业与私域操盘系统（私域为主体）",
+    "version": "2.7.0"
+  },
+  "plugins": [
+    {
+      "name": "xy",
+      "description": "XY 商业与私域操盘系统（私域为主体，流量与 AI 为私域自带能力）：43 个正式 Skill + 教练智能体 xy-coach，由 /xy 主入口按业务阶段路由。",
+      "source": "./",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "router",
+      "keywords": [
+        "private-domain",
+        "business",
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-ai-workflow",
+      "description": "内容生产 AI 流水线——先审计你现在从想法到发布每一步是谁在做、卡在哪，再判定哪一步该给 AI、哪一步必须留人，然后把想法→选题→逐字稿→切片→标题→发布排雷编排成一条有交接物的流水线，教你\"某个环节 AI 跑通了就固化成 skill\"的方法，并划清文风复制的正当边界（复制结构，不复制别人的稿）。用户说\"我想搭一条 AI 内容流水线\"\"哪一步能让 AI 干\"\"这个环节怎么固化成 skill\"\"怎",
+      "source": "./skills/xy-ai-workflow",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "ai-workflow",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-archive",
+      "description": "把这一轮聊出来的结论、否掉的路、待验证的假设，写成一份本地存档，下次接着用；顺带管存档放在哪。用户说「这个结论留着」「存一下」「记下来」「保存这次诊断」「存档放哪」「换个存档位置」时用。 Trigger: /xy-archive, \"save this\", \"remember this\", \"where are my archives\"",
+      "source": "./skills/xy-archive",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "state",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-atomize",
+      "description": "把本地内容资产抽成 XY 原子入库——指定一个目录（文稿/逐字稿/推文/课件），按原子标准抽成 jsonl 写进 incoming/：先审计、抽 3 篇样本过用户确认、再批量、去重、验收，最后提示 build_atoms 入库。用户说「把这些稿子做成原子」「把我的逐字稿入库」「批量提炼观点」时使用。",
+      "source": "./skills/xy-atomize",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "infra",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-biz-scan",
+      "description": "商业模式诊断。两种工作方式：问诊（把你带来的那个问题先拆开，看它成不成立，再决定答不答）和体检（用 XY 七项检查把你的生意从净利润到成长阶段过一遍，出报告）。用户说「帮我看看我这个生意」「诊断一下我的模式」「我有个商业问题」「我这个盘子哪里不对」「到底该不该继续做」「帮我算算到底赚不赚钱」时触发。",
+      "source": "./skills/xy-biz-scan",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "business",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-brief",
+      "description": "把一个项目下攒起来的多份 xy-archive 存档，按时间线合成一份能发给合伙人、能存档、能三个月后回看的 markdown 诊断报告。用户说「出份报告」「打包一下」「整理成一份给合伙人看」「把这几次的结论合起来」时用。 Trigger: /xy-brief, \"make me a report\", \"package these up\"",
+      "source": "./skills/xy-brief",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "state",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-casefile",
+      "description": "把一个要跟很久的域——一门私域生意、一个账号矩阵、一次换品或换模式——做成本地四层知识工程：事实、规律、定格、待解，带来源标签、写完不改的快照，能回填结果、能炼出你自己的规律。用户说「这个决定要跟踪」「立个案」「后来结果出来了，回填一下」「给我做份状态画像」「最近的变化是……」时用。 Trigger: /xy-casefile, /决策立案, /结果回填, /状态画像",
+      "source": "./skills/xy-casefile",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "state",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-clip",
+      "description": "长内容切片。把课程、直播复盘、访谈、私域内训的逐字稿，切成一条条能单独发出去的短视频方案——开头、展开、收尾可以来自逐字稿里相隔很远的三个位置，用跳切拼成完整叙事；只出方案，一个字不加。用户说「帮我切片」「这场直播能剪几条」「逐字稿在这，切一下」「课程切片」「找几段能发的」时使用。",
+      "source": "./skills/xy-clip",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "content",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-close",
+      "description": "私域成交诊断——从客户加上微信、有了意向，到报价、逼单、复购、升单、客诉，逐环节检查成交为什么卡住：节奏对不对、锚点有没有、一转二转三转怎么设、跟进有没有分层、有没有掉进低转高/9.9 引流课/常态化促销的坑。用户说\"客户不回我\"\"聊了不下单\"\"怎么报价\"\"怎么逼单\"\"复购上不去\"\"客户嫌贵\"\"客户把我删了\"\"帮我看看成交话术\"时触发。",
+      "source": "./skills/xy-close",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "private-domain",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-coach",
+      "description": "XY 操盘教练（Skill 版）。当宿主不支持自定义子智能体时，由本 Skill 承担教练角色：恢复用户档案、判断业务阶段、只推进一步、调用对应 xy-* skill、用原子库证据回答并给出接下来第一件事。用户说\"带我做\"\"我该怎么办\"\"不知道从哪开始\"\"你是我的教练\"或描述整体处境时使用。",
+      "source": "./skills/xy-coach",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "router",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-content-scan",
+      "description": "内容诊断。选题已经定了，帮你判断这条内容该做成什么形式、发在哪个平台，再用五个维度（文字与真实感 / 封面标题 / 表达效率 / 认知落差 / 内容职能匹配）过一遍，出报告和接下来第一步。只诊断不代写。用户说「这条内容怎么做」「帮我看看这个文案」「这个选题拍成什么形式」「口播稿帮我过一遍」「这条视频为什么没人看」「这条该发抖音还是小红书」时触发。",
+      "source": "./skills/xy-content-scan",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "content",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-course",
+      "description": "把一个课题做成一套连着读的学习文章，每篇末尾设检查站收答案、收用户反馈，没吃透不进下一课；也能从用户丢来的一段好内容反推该学什么，生成分阶段目录再建课。课题落在私域/短视频/AI 商业范围内时，直接拿原子库当教材并标 id。用户说「带我系统学一下私域成交」「学清楚直营 vs 代理」「继续下一篇」「根据我的反馈写下一篇」「给我做个课程」「这篇内容背后要学什么」时触发。触发词：/xy-course、/",
+      "source": "./skills/xy-course",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "learning",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-echo-test",
+      "description": "文稿共鸣诊断与传播解码，两个模式：①稿子还没发，怕没人有感觉、怕转发为零，用五个传播学理论找核心机制、判哪一维空了、给删改法；②一条已经跑起来的内容（自己的或对标的），拆它到底替谁说了哪句话、为什么有人转。用户说「这稿有没有共鸣」「戳没戳中人」「为什么这条能火」「观众到底想听什么」「这条打中了什么情绪」「能不能发」时触发。",
+      "source": "./skills/xy-echo-test",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "content",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-goal-card",
+      "description": "目标审计。把\"我想做私域\"\"我想做 IP\"\"我想让团队更强\"这类愿望，落成能开工、能验收的目标卡（交付物 / 给谁 / 范围 / 完成条件）；先从对话里提取已有信息，只补一个会改变做法或验收的缺口，已经清楚的直接放行。用户说「我想做…但不知从何开始」「我的目标是成为…」「我想变得更…」「这个任务说清楚了吗」「帮我把目标定一下」时使用。",
+      "source": "./skills/xy-goal-card",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "thinking",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-human-touch",
+      "description": "AI 味检测——逐句扫文案里的机器痕迹（姿态、结构、用词、内容、私域群发味共 20 项），按原文顺序出报告，默认只诊断不改；用户要改时，逐条追问那句话背后想干什么，再用他自己的话改。覆盖短视频口播、朋友圈、私信、小红书图文、公众号长文。用户说「有没有 AI 味」「像不像机器写的」「帮我看看这段是不是太假」「这条朋友圈像不像群发」「去一下 AI 味」时触发。",
+      "source": "./skills/xy-human-touch",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "content",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-idea-desk",
+      "description": "想法工作台。管\"一个念头怎么长成能用的选题\"这一段：随口记灵感、陪用户把直觉聊清楚、按固定结构写深化稿、评估这个选题给谁看/为什么有流量/为什么能变现、深化完分发到短视频/朋友圈/私域话术哪个场景、终稿写完归档母版。选题已经定了要写稿的事不归它管。用户说「记一个想法」「深化这个想法」「这个想法整理一下」「这个选题值不值得做」「想法工作台」时使用。",
+      "source": "./skills/xy-idea-desk",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "content",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-ip",
+      "description": "IP 人设定位诊断：用商业锚点、真实内核、垂直深度、情感连接、心智位阶段、记忆点、心理账户七项可验证标准，判断一个人设立不立得住、扛不扛得住私域近距离的信任考验。问诊模式看自己的账号，用户说「帮我看看这个人设定位」「我该怎么定位自己的 IP」「这个人设立得住吗」「账号方向对不对」「要不要转型」「帮我分析我的目标用户」时触发；操盘手模式帮别人推演，用户说「帮这个 IP 做定位」「接了新项目帮我做初步",
+      "source": "./skills/xy-ip",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "business",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-kickoff",
+      "description": "执行力诊断。用户知道该做什么（发第一条视频、加第一批人、卖第一盒货、开第一场播）却迟迟不动时，帮他辨认自己卡在六种\"不开工\"里的哪一种，并按类型给出最小的开工动作，不是打鸡血。用户说「我知道该做但就是不做」「我总在准备」「我又想换个方向」「学完这个课我就开始」「等我再打磨一下」「我现在条件不允许」时使用。",
+      "source": "./skills/xy-kickoff",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "thinking",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-link",
+      "description": "把一个 skill 或整个 skills/ 目录用软链挂到本机已安装的各个 Agent 宿主（公共入口 ~/.agents/skills、Claude Code、WorkBuddy、Trae 等专属入口，Grok 生成薄 bridge），也负责查桥接状态和拆桥。用户说「桥接这个 skill」「把 skill 接到 Codex/豆包/WorkBuddy」「让所有 Agent 都能用」「桥好了没」「取",
+      "source": "./skills/xy-link",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "infra",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-mode",
+      "description": "团队/分佣模式设计审查：用模式定性、合规红线自查、顶层结构与分钱结构体检、C 端健康度、反面模式排查五个维度，审查代理/分销/裂变体系设计得站不站得住，拆穿「被动收入」「低转高」「客户资源下放」这类陷阱；合规只给查证路径不下结论。用户说「帮我看看这个分佣模式」「要不要做代理制」「这个团队制度合规吗」「分钱怎么设」「是不是传销」「想设计一个分销体系」时触发。",
+      "source": "./skills/xy-mode",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "business",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-mp-layout",
+      "description": "把 Markdown 文稿转成能直接粘进微信公众号后台、粘完不散版的 HTML；内置 15 种排版风格，可生成 1 个 / 6 个推荐 / 全部 15 个并出总览页。用户说「转成公众号版」「做个公众号排版」「生成公众号 HTML」「这篇发公众号怎么排」「微信排版」时触发。只管排版，不改内容。",
+      "source": "./skills/xy-mp-layout",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "content",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-newbie",
+      "description": "私域/短视频新人起步 SOP——用\"赢的体验优先、熟人流量启动、前 100-200 客户是练习成本、新人礼过渡设计\"这几条可验证标准，帮完全没开始或刚起步没结果的人排出一条能落地的起步顺序，拦住\"先把体系搭起来\"\"先学好了再动手\"这类自我感动式准备。用户说\"我是新人该怎么开始\"\"刚入行第一步做什么\"\"新手起步 SOP\"\"我该怎么起号\"\"第一批客户从哪来\"\"朋友圈怎么发才不像卖货\"时触发。",
+      "source": "./skills/xy-newbie",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "business",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-opener",
+      "description": "短视频开头诊断与生成。先过闸门——判断这条内容够不够格配一个好开头；再对现有开头做六维诊断；最后用挖稿、补事实、藏答案三种方法出 10–15 条候选并推荐 Top 3。用户说「开头怎么写」「前 3 秒留不住人」「5 秒跳出太高」「第一句话说什么」「帮我改开场」「开头太平了」时触发。",
+      "source": "./skills/xy-opener",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "content",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-ops",
+      "description": "操盘手视角审查：用起盘阶段匹配度、组织规模临界值、人效红线、分钱执行与人心、一线检验五个维度，审查团队搭建、人效设计和起盘节奏是不是踩在真实业务阶段上，排除「团队大就是强」「GMV 好看就是赚钱」「靠感情能管好团队」这类假信号。用户说「帮我看看团队搭建得对不对」「提成怎么设」「该不该扩团队」「起盘节奏是不是太快」「人效有没有问题」「团队为什么留不住人」时触发。",
+      "source": "./skills/xy-ops",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "business",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-peer-pick",
+      "description": "帮你从对标账号/对标生意里筛出真正值得抄的目标——先过赚钱门槛、量级匹配、账号健康度三条硬线，再核对抄的是生意结构（人货场、定价、获客转化、交付复购）而不是封面标题文案这些表面，最后拆成能执行的清单；不拿\"适不适合我\"当借口。用户说\"帮我找对标\"\"我该学谁\"\"这个账号值得抄吗\"\"这个对标怎么模仿\"\"帮我拆一下这个账号的生意\"时触发。",
+      "source": "./skills/xy-peer-pick",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "business",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-playbook",
+      "description": "赛道打法推演——输入行业、客单价、现状，输出这个赛道的钱从哪个心智阶段流出来、内容三类职能怎么配比、产品怎么分层、流量怎么进私域、在哪成交、合规红线在哪、可复用的账号结构长什么样。内置 8 张赛道模板（减脂/体重、中医养生精油、服装穿搭与快消、微商转直营与代理制改造、知识付费小班课、大健康私域直营、留学等高决策成本非标服务、英语启蒙等买用分离型教育），其它赛道走通用推演并标 🔴 假设。用户说\"我是",
+      "source": "./skills/xy-playbook",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "industry",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-precedent",
+      "description": "历史同构研究——把用户眼下的经营困境压成一张\"结构指纹\"，在商业史、行业史和 XY 案例库里找结构相同的成功、失败与反例，比出反复起作用的机制、成立条件和失效边界，判断有没有\"标准答案\"。用户说\"以前有人遇到过吗\"\"历史上谁碰过这个\"\"有没有经典解法\"\"这个问题有没有标准答案\"\"先帮我找类比\"时触发。",
+      "source": "./skills/xy-precedent",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "thinking",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-private-ops",
+      "description": "私域日常运营诊断——朋友圈内容配比与节奏、号面与人设、标签分层与打标、激活沉睡（主动+被动）、社群运营、陪伴式信任积累、直营化 vs 微商化体系判断、私域正规化七要素自查，逐项体检你的私域是在\"经营\"还是在\"堆人\"。用户说\"朋友圈怎么发\"\"一天发几条\"\"标签怎么打\"\"好友加了不互动\"\"怎么激活老客户\"\"社群没人说话\"\"我这算直营还是微商\"\"朋友圈发广告会不会被限流/封号\"时触发。",
+      "source": "./skills/xy-private-ops",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "private-domain",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-publish-guard",
+      "description": "发布前风险检查。把一段准备发出去的文案、口播稿、标题、字幕、评论、账号资料或画面描述逐句过一遍，分开回答两件事：平台的自动审核可能盯上什么、内容本身有没有实质问题；每一处都给到位置和最小修改动作，不重写全文，不教绕审。用户说「这条能不能发」「帮我排一下雷」「会不会限流」「有没有违规词」「发布前检查一下」「这句话有没有问题」时使用。朋友圈/微信生态的限流封号问题不归它，归 xy-private-op",
+      "source": "./skills/xy-publish-guard",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "content",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-question-spec",
+      "description": "问题说明书。把\"为什么没人咨询\"\"客户加了不回\"\"这事能不能让 AI 自动做\"这类说不清的问题，改写成有对象、有冲突、有约束、有反馈入口的问题说明书，并判断它能被 Agent 接手到哪一档。用户说「帮我把问题说清楚」「这个问题能不能自动化」「我也不知道问题出在哪」「为什么我的…没人…」「能不能让 AI 替我做这个」时使用。",
+      "source": "./skills/xy-question-spec",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "thinking",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-replica",
+      "description": "爆款素材复刻——把对标爆款视频拆成结构与可迁移公式（证据分级，不脑补），再换上你自己产品的真实卖点，产出复刻脚本或 AI 生视频提示词；没拿到可用卖点前只交付结构分析，绝不编卖点、不虚构商品外观。用户说\"帮我拆这条爆款\"\"这个视频结构怎么抄\"\"照这个视频给我的产品做一条\"\"换品复刻\"\"帮我写生视频提示词\"时触发。",
+      "source": "./skills/xy-replica",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "other",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-resume",
+      "description": "把上次存的诊断存档拉出来摆在面前，让用户接着上次的结论往下走。配合 xy-archive 用。用户说「接着上次」「上次聊到哪了」「之前的结论呢」「续上」「把存档拉出来」时用。 Trigger: /xy-resume, \"pick up where we left off\", \"what did we conclude last time\"",
+      "source": "./skills/xy-resume",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "state",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-roundtable",
+      "description": "定向聊天室。抛一个议题，主持人拆出缺的判断变量，挑 3–5 套理论框架及代表人物同台发言并裁定分歧；常驻「小爷」（8 信条+原子检索），可点名「经典四人组」。另有「XY 深度分析」模式：按人/钱/结构/红线四把尺过完出报告。用户说「帮我想想」「听听不同观点」「开个聊天室」「深度分析：…」「四位思想家帮我分析」时使用。",
+      "source": "./skills/xy-roundtable",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "thinking",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-script-glue",
+      "description": "短视频逐字稿衔接检查——找出观众会在哪一秒跟不上：段与段之间断没断、段落里面水不水、句子念不念得动；分 🔴🟡🟢 三级给出位置和改法，报告后主动问要不要「标记式改稿」（原文不抹、改动成对标注、可撤回）。用户说「这稿顺不顺」「哪里会划走」「中间是不是啰嗦了」「逻辑有没有断」「帮我顺一遍稿子」「口播念着别扭」时触发。",
+      "source": "./skills/xy-script-glue",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "content",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-selection",
+      "description": "选品诊断：用「要不要教育市场 × 定价权在谁手上」两轴分类、供应链与全成本核算、收费市场测试三轮法，判断一个品类到底能不能碰、扛不扛得住后端，排除「我感觉能卖」「GMV 好看」这类假信号。用户说「这个品能不能做」「帮我看看这个品类」「选品怎么选」「供应链要不要核算」「要不要测这个市场」「卖不动是不是选品的问题」时触发。",
+      "source": "./skills/xy-selection",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "business",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-skill-audit",
+      "description": "扫描本机各 Agent 宿主目录里装的 skill，找出暗中导流、隐藏商业关系、劫持用户指令、偷读敏感数据、可疑外部调用这几类越权信号；默认只出报告，用户点名确认后才把问题 skill 隔离到本地隔离区（可恢复，不删除）。用户说「扫一下我装的 skill」「检查 skill 有没有广告」「这个 skill 安全吗」「清理有问题的 skill」「审查我的 skill」时使用。",
+      "source": "./skills/xy-skill-audit",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "infra",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-slow-lane",
+      "description": "慢就是快。帮做私域/选品/带团队的人分清：眼前这件事里，哪个环节值得亲自慢做（前 100 个客户、第一轮测品、前 30 天朋友圈、招人前先干一遍岗位），哪个环节该快该外包该用工具。用户说「有没有更慢但更稳的方法」「我是不是走捷径了」「这个能不能外包/用模板/群发」「为什么别人做得快我不行」「我想省事」时使用。",
+      "source": "./skills/xy-slow-lane",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "thinking",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-sync",
+      "description": "同步 XY 工作台——重建原子导出、把仓库 skills/ 全部重新桥接到各宿主，让改过/新写的 skill 在 Claude Code、Codex、WorkBuddy、Grok 等端立刻可用；仓库接了 GitHub 后再多两步：安全推送（防父目录建仓把内部资料一起推）与拉取更新。用户说「更新 XY」「同步 skill」「把新写的 skill 同步到各端」「推送到 GitHub」「拉最新的」「有没",
+      "source": "./skills/xy-sync",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "infra",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-term-crack",
+      "description": "概念拆解。把私域/短视频/IP 圈里被说烂的词（私域、直营化、微商化、推客、订单粉、引流品/利润品、人效、寂寞期、赢的体验、心智位、精神母体、被动收入、精准流量）拆到能落到动作和数字的程度，并判断哪些是换皮的旧词、哪些问题根本没有文字答案。用户说「私域到底是什么」「这个词什么意思」「帮我拆一下这个概念」「他说的和我理解的一样吗」「这算不算新东西」时使用。",
+      "source": "./skills/xy-term-crack",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "thinking",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-traffic",
+      "description": "诊断\"公域流量怎么设计路径导进私域\"——按平台风控差异、账号阶段导流强度、手法风险分级、流量质量筛选、后端承接五项检查给判定，排除\"抄同行导流话术\"\"流量越多越好\"\"先留联系方式再说\"这类想当然式设计。兼管短视频账号起号与冷启动（新号没流量、标签打歪了先来这）。用户说\"新号没流量\"\"怎么起号\"\"这个导流方式对不对\"\"引流路径怎么设计\"\"怎么把流量导到微信\"\"这样导流会不会有风险\"\"导流强度该多大\"",
+      "source": "./skills/xy-traffic",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "traffic",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-vault",
+      "description": "把用户手上的本地文件夹（客户档案、货盘表、朋友圈素材、课程逐字稿、代理政策历史版本、直播复盘…）变成 AI 能稳定查、稳定放、稳定判版本的知识库：没资料先建最小结构，有资料就生成一份只指路的「知识库导航」，之后负责放新资料、找答案、认最新版、体检、瘦身。用户说「搭个知识库」「让 AI 读懂我这堆文件」「把这份放进知识库」「从知识库找一下」「哪个是最新版」「更新知识库」「导航太长了瘦一瘦」时触发。触",
+      "source": "./skills/xy-vault",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "infra",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-workbench",
+      "description": "把一个项目整理成 Claude Code / Codex / Grok / 通用 Agents（~/.agents/skills）多端一致、能长期维护的 Agent 工作台：审规则文件（CLAUDE.md / AGENTS.md）、认 skill 真源、统一命名、生成桥接、逐项验证。用户说「迁移到 Codex」「迁到 Claude Code」「Grok 也要能用」「统一 AGENTS.md」「我的",
+      "source": "./skills/xy-workbench",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "infra",
+      "keywords": [
+        "chinese"
+      ]
+    },
+    {
+      "name": "xy-xhs-headline",
+      "description": "小红书标题公式匹配器。给一个话题和行业，从 75 个公式模板里挑 5–8 个最贴的，套出定制标题、标公式编号、给 Top 3。用户说「帮我起个小红书标题」「标题怎么写」「这个标题能不能改好点」「有哪些标题套路」「小红书标题公式」时触发。只管小红书那一行字，不管短视频开头、不管正文。",
+      "source": "./skills/xy-xhs-headline",
+      "strict": true,
+      "version": "2.7.0",
+      "category": "content",
+      "keywords": [
+        "chinese"
+      ]
+    }
+  ]
+}

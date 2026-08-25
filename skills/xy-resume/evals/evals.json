@@ -1,0 +1,17 @@
+[
+  {
+    "input": "用户新开对话说：接着上次。（~/.xy/sessions/siyu-houduan/ 下有 3 份存档，最新一份 next_skill 为空、下一步为「待定」）",
+    "expect": "按文件名 YYYYMMDD-HHMMSS 而非 mtime 取最新一份；一屏摆出项目/时间/来源 skill/状态、主诉、结论、否掉的路、假设、定下的下一步（待定）；末尾只问一次「现在从哪儿接？」；不替用户选 skill，不寒暄。",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "用户说：/xy-resume 7（当前项目下只有 3 份存档）",
+    "expect": "回「{项目名} 下只有 3 份，你给的是 7」，不猜、不拉别的文件；不跨目录搜索。",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "用户说：把上次那几次的结论合成一份，我要发给合伙人看。",
+    "expect": "识别这是合并多份存档出报告的需求，不是接续；说明本 skill 只拉一份存档接着聊，合成报告归 xy-brief；保留用户信息。",
+    "should_route_elsewhere": true
+  }
+]

@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-precedent"
+  short_description: "历史同构研究：把经营困境压成结构指纹，在商业史与 XY 案例库找同构的成败与反例，比出机制与失效边界。"
+  default_prompt: "使用 $xy-precedent，我这个困境历史上有人遇到过吗，帮我找类比和经典解法。"

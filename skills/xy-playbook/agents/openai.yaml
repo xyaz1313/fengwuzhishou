@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-playbook"
+  short_description: "赛道打法推演：输入行业、客单价、现状，输出心智阶段、内容配比、产品分层、导流成交与合规红线，内置 4 模板。"
+  default_prompt: "使用 $xy-playbook，我是做这个赛道的，帮我推一下获客和成交的打法。"

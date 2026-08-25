@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-resume"
+  short_description: "把上次 xy-archive 存的诊断存档拉出来摆在面前，接着上次的结论往下走，不重问已知信息。"
+  default_prompt: "使用 $xy-resume，把上次的存档拉出来，接着上次聊到的地方继续。"

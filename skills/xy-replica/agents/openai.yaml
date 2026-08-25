@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-replica"
+  short_description: "爆款素材复刻：对标视频证据分级拆解、结构六维迁移公式、卖点门控换品复刻，产出脚本或 AI 生视频提示词。"
+  default_prompt: "使用 $xy-replica，帮我拆这条对标爆款的结构，然后换成我的产品复刻一条。"

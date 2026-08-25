@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-roundtable"
+  short_description: "定向聊天室：主持人拆议题变量，挑 3–5 套理论框架代表人物同台辩论并裁定；含 XY 深度分析报告模式。"
+  default_prompt: "使用 $xy-roundtable，开个聊天室让几种不同理论视角来辩这个议题。"

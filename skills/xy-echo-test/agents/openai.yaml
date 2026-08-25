@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-echo-test"
+  short_description: "文稿共鸣诊断与传播解码：未发稿用五个传播学理论找核心机制判哪维空了；已发内容拆它替谁说了哪句话。"
+  default_prompt: "使用 $xy-echo-test，这篇稿子有没有共鸣、能不能戳中人，帮我诊断。"

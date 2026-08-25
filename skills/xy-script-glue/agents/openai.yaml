@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-script-glue"
+  short_description: "短视频逐字稿衔接检查：找观众哪一秒跟不上，段间断、段内水、句子念不动，分三级给位置改法，可标记式改稿。"
+  default_prompt: "使用 $xy-script-glue，帮我顺一遍这篇口播稿，看哪里会让观众划走。"

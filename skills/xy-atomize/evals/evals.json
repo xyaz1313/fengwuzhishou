@@ -1,0 +1,17 @@
+[
+  {
+    "input": "我有 36 期直播的逐字稿，在 ~/Documents/直播稿/ 里，大概 40 万字，帮我抽成原子放进知识库。",
+    "expect": "Phase 0 只读审计：文件数/字数/格式/质量一句话，判定达标（≥10 篇或 ≥2 万字），提议来源码（如 XY-UZB）与 source_label 并先查主库无撞码；不直接批量，先抽 3 篇样本逐条给 id/type/topics/confidence/knowledge/original 让用户核'拆得对不对/案例没拆碎/人名脱敏/独立可读'；确认后才批量写 knowledge/_internal/incoming/<来源>.jsonl；结束提示用户自己跑 python3 tools/build_atoms.py，不代跑。",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "样本里这条'某学员小李跟着我做三个月，朋友圈复购从 5 单涨到 40 单'，人名留着吧，是我自己的学员，还有能不能把这条拆成'跟着做三个月'和'复购涨到 40 单'两条？",
+    "expect": "两条都拒：人名脱敏是全库红线，改'某学员'（用户可在原稿回查）；案例不拆，起因—做法—结果是一条 case 或 number，数字留在里面；把用户这次的改法记成后续批量规则。",
+    "should_route_elsewhere": false
+  },
+  {
+    "input": "把我这个 ~/Documents/资料库 文件夹整理成 AI 能查的知识库，建个导航，以后我问它就能找到文件。",
+    "expect": "识别这是文件夹知识库（建导航/放资料/找文件/查健康、不改写内容），属于 xy-vault；本 skill 只做把稿子里的观点抽成原子入 knowledge/；说明边界，保留用户信息，不预设长链。",
+    "should_route_elsewhere": true
+  }
+]

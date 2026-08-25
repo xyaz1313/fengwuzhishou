@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-ai-workflow"
+  short_description: "审计你的内容生产链每步由谁做、卡在哪，编排想法到发布的 AI 流水线，教把跑通环节固化成 skill。"
+  default_prompt: "使用 $xy-ai-workflow，帮我审计现在的内容生产流程，判断哪一步该交给 AI。"

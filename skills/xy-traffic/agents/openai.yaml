@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-traffic"
+  short_description: "公域导私域路径诊断五项检查：平台风控差异、账号阶段导流强度、手法风险分级、流量质量筛选、后端承接。"
+  default_prompt: "使用 $xy-traffic，帮我看看这个引流到微信的路径设计对不对、有没有风险。"

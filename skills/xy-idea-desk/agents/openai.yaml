@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-idea-desk"
+  short_description: "想法工作台：随口记灵感、聊清直觉、按固定结构写深化稿、评估选题价值、分发到场景、终稿归档母版。"
+  default_prompt: "使用 $xy-idea-desk，记一个想法并帮我深化成能用的选题。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-goal-card"
+  short_description: "把「我想做私域/IP」类愿望落成能开工能验收的目标卡（交付物/给谁/范围/完成条件），只补一个关键缺口。"
+  default_prompt: "使用 $xy-goal-card，我想做私域但不知从何开始，帮我把目标定成能开工的目标卡。"

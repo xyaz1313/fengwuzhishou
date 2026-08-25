@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+# 由 tools/gen_skill_scripts.py 从根 scripts/atoms-search 下发，勿手改；重建跑 gen_skill_scripts.py
+"""XY 原子检索（零依赖）。用法：
+  atoms-search "关键词 关键词2" [--skill xy-close] [--type case,anti-pattern] [--topic 成交与话术] [-k 5] [--json]
+默认在 <本脚本所在包>/knowledge/atoms.jsonl 检索；可用 XY_ATOMS 环境变量指定路径。
+评分：knowledge 命中关键词数×3 + original 命中×1 + type 偏好(case/anti-pattern/number +1) + confidence high +1。"""
+import json, os, sys, re, argparse
+def _find_atoms():
+    """定位原子库：XY_ATOMS 环境变量 > 本脚本真实路径所在包 > ~/.xy/config.json 的 root > 常见安装位置。
+    用 realpath 是因为宿主常以软链方式加载 skill（~/.claude/skills/xy-coach → 仓库），按软链位置找会找到不存在的目录。"""
+    if os.environ.get("XY_ATOMS"): return os.environ["XY_ATOMS"]
+    here=os.path.dirname(os.path.realpath(__file__))
+    cands=[os.path.join(os.path.dirname(here),"knowledge","atoms.jsonl"),            # <root>/scripts/atoms-search
+           os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(here))),"knowledge","atoms.jsonl"),  # <root>/skills/<x>/scripts/atoms-search
+           os.path.join(os.path.dirname(here),"references","atoms.jsonl")]           # 单拷 skill 文件夹时的本地子集兜底
+    try:
+        cfg=json.load(open(os.path.expanduser("~/.xy/config.json"),encoding="utf-8"))
+        if cfg.get("root"): cands.append(os.path.join(cfg["root"],"knowledge","atoms.jsonl"))
+    except Exception: pass
+    for base in ("~/.agents/skills/xy","~/.claude/skills/xy","~/.kimi-code/skills/xy","~/.workbuddy/skills/xy"):
+        rp=os.path.realpath(os.path.expanduser(base))
+        cands.append(os.path.join(os.path.dirname(os.path.dirname(rp)),"knowledge","atoms.jsonl"))
+    for c in cands:
+        if os.path.isfile(c): return c
+    return cands[0]
+
+# === 真 IDF 权重：出现在几千条里的词（提升/转化/品牌）没有定位价值，只有稀有词才算数 ===
+_IDF={}
+try:
+    _ip=os.path.join(os.path.dirname(os.path.abspath(a.file)),"idf.json") if False else None
+except Exception: pass
+def _load_idf(atoms_path):
+    import os as _o
+    for cand in [_o.path.join(_o.path.dirname(atoms_path),"idf.json"),
+                 _o.path.join(_o.path.dirname(_o.path.dirname(_o.path.realpath(__file__))),"knowledge","idf.json")]:
+        if _o.path.isfile(cand):
+            try: return json.load(open(cand,encoding="utf-8"))
+            except Exception: return {}
+    return {}
+
+default=_find_atoms()
+ap=argparse.ArgumentParser(); ap.add_argument("query"); ap.add_argument("--skill"); ap.add_argument("--type"); ap.add_argument("--topic"); ap.add_argument("-k",type=int,default=5); ap.add_argument("--json",action="store_true"); ap.add_argument("--file",default=default)
+a=ap.parse_args()
+_IDF=_load_idf(a.file)
+kws=[w for w in re.split(r"[\s,，、/]+",a.query) if w]
+# 长复合词降级：把 >4 字的词同时拆成 2-3 字子串一起检索（"核销率提升"→核销/提升），
+# 否则库里没有字面一致的复合词就会零命中
+_ext=[]
+for _w in kws:
+    if len(_w)>4:
+        _ext += [_w[i:i+2] for i in range(0,len(_w)-1,2)] + [_w[:3],_w[-3:]]
+    elif len(_w)==4:
+        _ext += [_w[:2],_w[2:]]
+kws = kws + [w for w in dict.fromkeys(_ext) if len(w)>=2 and w not in kws]
+types=set(a.type.split(",")) if a.type else None
+rows=[]
+try:
+    for l in open(a.file,encoding="utf-8"):
+        l=l.strip()
+        if not l: continue
+        try: o=json.loads(l)
+        except: continue
+        if a.skill and "skills" in o and a.skill not in (o.get("skills") or []): continue  # 子集文件无 skills 字段时不过滤，防静默全空
+        if types and o.get("type") not in types: continue
+        if a.topic and a.topic not in (o.get("topics") or []): continue
+        k=o.get("knowledge",""); og=o.get("original","") or ""
+        head=k[:30]
+        s=0.0
+        for w in kws:
+            c=k.count(w)
+            if c==0:
+                if w in og: s+=1
+                continue
+            # ① 真 IDF 加权：词表里没有=太常见=无定位价值，权重压到 0.3
+            _idf=_IDF.get(w)
+            if _idf is None: base=0.3
+            else: base=min(8.0,_idf)*1.2
+            # ② 首句加权：命题通常在前 30 字
+            if w in head: base+=2.0
+            # ③ 多次出现说明是主题，但收益递减
+            s+=base*(1+0.4*min(c-1,3))
+            # ④ 顺带提及降权：只出现一次且在末尾三成位置
+            if c==1 and k.rfind(w)>len(k)*0.7 and w not in head: s-=1.5
+        if s<=0: continue
+        # ⑤ 教学信号：含方法/比例/阶梯/红线/步骤 → 这是"教你怎么做"而不是"顺带提到"
+        import re as _re
+        _teach=0
+        if _re.search(r"\d+ ?[%点元条天倍]|阶梯|梯度|红线|上限|下限|三步|四步|五步|第一步|原则[:：]|标准[:：]|公式|先.{1,6}再|配比|占比", k): _teach+=4
+        if _re.search(r"怎么设|如何设|设计|判定|判断标准|自查|checklist|清单", k): _teach+=2
+        s+=_teach
+        if o.get("type") in ("case","anti-pattern","number","method"): s+=2
+        if o.get("confidence")=="high": s+=2
+        if o.get("source_type") in ("account_video","course","user_import"): s+=6  # 小爷自有实战优先
+        # ⑥ 场景降噪：外部企业/咨询库(CS/CE/CF)在私域·成交·内容·直播·流量类技能里是噪音，降权
+        _SCENE={"xy-close","xy-private-ops","xy-content-scan","xy-opener","xy-live","xy-traffic",
+                "xy-newbie","xy-script-glue","xy-human-touch","xy-xhs-headline","xy-idea-desk","xy-replica","xy-clip"}
+        if a.skill in _SCENE and str(o.get("id","")).startswith(("XY-CS-","XY-CE-","XY-CF-")): s-=6
+        rows.append((s,o))
+except FileNotFoundError:
+    print(f"[atoms-search] 找不到原子库：{a.file}",file=sys.stderr); sys.exit(0)
+rows.sort(key=lambda x:-x[0]); rows=rows[:a.k]
+if a.json: print(json.dumps([o for _,o in rows],ensure_ascii=False)); sys.exit(0)
+for s,o in rows:
+    print(f"- [{o['id']}] ({o.get('type')}/{o.get('confidence')}) {o['knowledge']}")
+if not rows: print("（原子库暂无匹配，请明说没有实证）")

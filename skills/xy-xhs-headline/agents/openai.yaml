@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-xhs-headline"
+  short_description: "小红书标题公式匹配：给话题和行业，从 75 个公式里挑 5–8 个套出定制标题、标公式编号、给 Top 3。"
+  default_prompt: "使用 $xy-xhs-headline，帮我给这个话题起几个小红书标题。"

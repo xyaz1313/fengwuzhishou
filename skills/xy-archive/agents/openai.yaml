@@ -1,0 +1,4 @@
+interface:
+  display_name: "xy-archive"
+  short_description: "把本轮聊出的结论、否掉的路、待验证假设写成本地存档供下次续用，并管理存档存放位置。"
+  default_prompt: "使用 $xy-archive，把这轮的结论存档，下次接着用。"
