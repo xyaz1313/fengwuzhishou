@@ -6,6 +6,8 @@ private/
 # 绝不入库：内部蒸馏留痕/决策记录可能点名具体第三方来源方，仓库是公开的，一旦推上去就是"正文"，删不干净
 知识库/
 docs/decisions/
+docs/provenance/
+tools/name_blocklist.txt
 
 # 内部草稿与评测产物
 docs/_drafts/

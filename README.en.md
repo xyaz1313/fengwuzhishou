@@ -6,7 +6,7 @@
 
 > *Seen every playbook, kept to first principles.*
 
-**A business & private-domain consultant that lives inside your AI.** Built by a Chinese private-domain operator with 20 years of hands-on experience — scaling a TCM wellness brand to ¥125M in 10 months, an aromatherapy brand to ¥240M in 2 years — this system packages that judgment into **43 Skills** backed by **26,895 knowledge atoms**. Every judgment traces back to a specific atom ID; when it genuinely can't find one, it says so instead of making one up.
+**A business & private-domain consultant that lives inside your AI.** Built by a Chinese private-domain operator with 20 years of hands-on experience — scaling a TCM wellness brand to ¥125M in 10 months, an aromatherapy brand to ¥240M in 2 years — this system packages that judgment into **45 Skills** backed by **27,853 knowledge atoms**. Every judgment traces back to a specific atom ID; when it genuinely can't find one, it says so instead of making one up.
 
 One premise up front: **your private domain can generate its own traffic.** Don't buy into the "grow traffic first, build private domain later" split — your WeChat moments are already an ad slot, your repeat customers already refer new ones, content and lead-gen are capabilities private domain owns on its own.
 
@@ -59,17 +59,18 @@ One skill at a time. Each round's conclusion becomes the input for the next roun
 
 ## What's inside
 
-43 skills across 13 areas — plain language routes you in automatically, or call a skill by name:
+45 skills across 13 areas — plain language routes you in automatically, or call a skill by name:
 
 | Area | Call directly | What you typically get |
 | --- | --- | --- |
 | Business diagnosis & model | `/xy-biz-scan` `/xy-mode` `/xy-ops` | Seven-point health check, commission review, efficiency & launch-readiness calls |
+| Enterprise AI consulting | `/xy-fde` | Off-the-shelf vs. custom calls, pricing models, org-adoption resistance |
 | Product selection & supply chain | `/xy-selection` | Two-axis classification, cost accounting, paid-test plan |
 | IP & positioning | `/xy-ip` `/xy-goal-card` | Seven positioning criteria, an executable goal card |
 | Content creation | `/xy-content-scan` `/xy-opener` `/xy-script-glue` `/xy-human-touch` | Five-dimension diagnosis, opening-line candidates, flow check, de-AI-flavor pass |
 | Titles & distribution | `/xy-xhs-headline` `/xy-echo-test` | Top-3 titles, resonance-mechanism breakdown |
 | Traffic & lead-gen | `/xy-traffic` `/xy-peer-pick` | Account-warmup & lead-gen path, benchmark screening |
-| Long-form clipping | `/xy-clip` | Turn a transcript into short-video segments |
+| Long-form editing | `/xy-clip` `/xy-recut` | Turn a transcript into short-video segments, or trim/reorder a long video |
 | Private-domain ops & closing | `/xy-private-ops` `/xy-close` | Full diagnosis from WeChat moments to repeat purchase |
 | Playbooks & precedent | `/xy-playbook` `/xy-precedent` | 8 industry playbook templates, historically-analogous cases |
 | Publishing risk | `/xy-publish-guard` `/xy-skill-audit` | Pre-publish risk sweep, local skill security check |

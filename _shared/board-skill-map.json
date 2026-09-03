@@ -26,6 +26,7 @@
    "xy-xhs-headline",
    "xy-publish-guard",
    "xy-clip",
+   "xy-recut",
    "xy-replica",
    "xy-idea-desk",
    "xy-ai-workflow",
@@ -66,6 +67,9 @@
    "xy-playbook",
    "xy-peer-pick",
    "xy-biz-scan"
+  ],
+  "12 企业AI顾问": [
+   "xy-fde"
   ]
  },
  "meta_skills": [
